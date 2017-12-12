@@ -35,6 +35,8 @@ Article.prototype.toHtml = function() {
 // COMMENT: Where is this function called? What does 'rawData' represent now? How is this different from previous labs?
 // PUT YOUR RESPONSE HERE
 Article.loadAll = rawData => {
+
+  
   rawData.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)))
 
   rawData.forEach(articleObject => Article.all.push(new Article(articleObject)))
@@ -43,13 +45,15 @@ Article.loadAll = rawData => {
 // REVIEW: This function will retrieve the data from either a local or remote source, and process it, then hand off control to the View.
 Article.fetchAll = () => {
   // REVIEW: What is this 'if' statement checking for? Where was the rawData set to local storage?
+  // on articleView.js : $('#article-json').val(`${JSON.stringify(article)},
   if (localStorage.rawData) {
 
-
-    Article.loadAll();
+    var data = Article.JSON.parse();
+    console.log(data);
+    data.loadAll();
 
   }
-  //To Do complete statement
+  //To Do complete statemen
   else {
 
     $.ajax({
@@ -59,6 +63,19 @@ Article.fetchAll = () => {
         console.log('JSON Data:',data);
       }
     })
+
+      .then(
+
+        function (data){
+
+          localStorage.setItem('rawData', JSON.stringify(data));
+        }
+
+      )
+   
+    Article.fetchAll();
+
+    
 
   }
 }
