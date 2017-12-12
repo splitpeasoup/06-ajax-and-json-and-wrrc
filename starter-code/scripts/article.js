@@ -48,9 +48,10 @@ Article.fetchAll = () => {
   // on articleView.js : $('#article-json').val(`${JSON.stringify(article)},
   if (localStorage.rawData) {
 
-    var data = Article.JSON.parse();
-    console.log(data);
-    data.loadAll();
+
+    Article.loadAll(JSON.parse(localStorage.rawData));
+    console.log('data', localStorage.rawData);
+    articleView.initIndexPage();
 
   }
   //To Do complete statemen
@@ -60,6 +61,7 @@ Article.fetchAll = () => {
       url: '../vendor/data/hackerIpsum.json',
       method: 'GET',
       success: function (data) {
+        data.loadAll(data);
         console.log('JSON Data:',data);
       }
     })
@@ -69,11 +71,13 @@ Article.fetchAll = () => {
         function (data){
 
           localStorage.setItem('rawData', JSON.stringify(data));
+          console.log('data', rawData);
+          Article.fetchAll();
         }
 
       )
    
-    Article.fetchAll();
+    // Article.fetchAll();
 
     
 
