@@ -45,9 +45,20 @@ Article.fetchAll = () => {
   // REVIEW: What is this 'if' statement checking for? Where was the rawData set to local storage?
   if (localStorage.rawData) {
 
+
     Article.loadAll();
 
-  } else {
+  }
+  //To Do complete statement
+  else {
+
+    $.ajax({
+      url: "data/hackerIpsum.json",
+      method: 'GET',
+      success: function (data) {
+        console.log('JSON Data:',data);
+      }
+    })
 
   }
 }
