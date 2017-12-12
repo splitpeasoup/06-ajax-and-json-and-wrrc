@@ -57,7 +57,7 @@ Article.fetchAll = () => {
   else {
 
     $.ajax({
-      url: "data/hackerIpsum.json",
+      url: '../vendor/data/hackerIpsum.json',
       method: 'GET',
       success: function (data) {
         console.log('JSON Data:',data);
