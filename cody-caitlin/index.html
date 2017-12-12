@@ -1,3 +1,5 @@
+//cody-caitlin
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -73,7 +75,15 @@
           </ul>
         </section>
       </section>
+    </section>
+    <section id="article-export">
+      <label id="export-field" for="article-json" class="pull-right">
+        <input type="text" readonly id="article-json">
+        When finalized, copy the above JSON, and paste into blogArticles.js
+      </label>
+    </section>
     </main>
+
     <footer>
       &copy; 2017 Code Fellows | Static Blog | Happy Ipsum!
     </footer>
@@ -81,7 +91,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-    <script src="/scripts/article.js"></script>
-    <script src="/scripts/articleView.js"></script>
+   <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
+    <script>
+      Article.fetchAll();
+    </script>
+  
+   
   </body>
 </html>
